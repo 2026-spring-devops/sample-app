@@ -14,7 +14,8 @@ const server = http.createServer(
     
     The time on the server is: ${new Date().toString()}
     
-    The D6 rolled a ${Math.floor(Math.random() * 6) + 1}`
+    The D6 rolled a ${Math.floor(Math.random() * 6) + 1} 
+    The D20 rolled a ${Math.floor(Math.random() * 20) + 1}`
 );          
 });
 
