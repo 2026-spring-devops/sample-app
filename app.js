@@ -10,9 +10,11 @@ const server = http.createServer(
                     'Content-Type': 'text/plain' 
                 }
             );
-        res.end(
-            "Hello, Thomas' World ! ! !\n"
-        );          
+        res.end(`Hello, Thomas' World ! ! !
+
+The time on the server is ${new Date().toLocaleString()}
+`
+        );
     }
 );
 
