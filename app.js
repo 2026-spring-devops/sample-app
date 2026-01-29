@@ -10,7 +10,10 @@ const server = http.createServer(
 
       });
   res.end(
-    "Hello, Jeff's World!!!!\n"
+    `Hello, Jeff's World!!!!
+    
+    The time on the server is: ${new Date().toString()}
+    `
 );          
 });
 
