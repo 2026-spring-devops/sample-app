@@ -13,7 +13,8 @@ const server = http.createServer(
     `Hello, Jeff's World!!!!
     
     The time on the server is: ${new Date().toString()}
-    `
+    
+    The D6 rolled a ${Math.floor(Math.random() * 6) + 1}`
 );          
 });
 
