@@ -4,7 +4,9 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end(`Hello, John's World ! ! !
 
-The time on the server is ${new Date().toLocaleString()}`);   
+The time on the server is ${new Date().toLocaleString()}
+
+The D6 rolled a ${Math.floor(Math.random() * 6) + 1}`);
 });
 
 const port = process.env.PORT || 8080; 
