@@ -20,9 +20,11 @@ Hello, Scott's World ! ! !
 
 The time on ${os.hostname()} (server) is ${new Date().toLocaleString()}
 
-The D6 rolled a ${Math.floor(Math.random() * 6) + 1}
+The D4 rolled a ${Math.floor(Math.random() * 4) + 1}
 
-The D20 rolled a ${Math.floor(Math.random() * 20) + 1}
+The D10 rolled a ${Math.floor(Math.random() * 10) + 1}
+
+The D16 rolled a ${Math.floor(Math.random() * 16) + 1}
 `
 
         );          
