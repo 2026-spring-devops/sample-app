@@ -14,11 +14,13 @@ const server = http.createServer(
                     'Content-Type': 'text/plain' 
                 }
             );
-        res.end(`Hello, Thomas' World ! ! !
+        res.end(`Hey visitor, welcome to the World of Thomas ! ! !
 
 The time on ${os.hostname()} (server) is ${new Date().toLocaleString()}
 
 The D6 rolled a ${Math.floor(Math.random() * 6) + 1}
+
+The D10 rolled a ${Math.floor(Math.random() * 10) + 1}
 
 The D20 rolled a ${Math.floor(Math.random() * 20) + 1}
 `
