@@ -13,6 +13,7 @@ The time on ${os.hostname()} (server) is ${new Date().toLocaleString()}
 
 The D6 rolled a ${Math.floor(Math.random() * 6) + 1}
 The D20 rolled a ${Math.floor(Math.random() * 20) + 1}
+The D17 rolled a ${Math.floor(Math.random() * 17) + 1}
 `
         );
     }
