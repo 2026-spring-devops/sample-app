@@ -19,7 +19,7 @@ const port = process.env.PORT || 8080;
       `Hello, Jeff's World!!!!
     
     The time on ${os.hostname()} the (server) is: ${new Date().toString()}
-    
+    The D100 rolled a ${Math.floor(Math.random() * 100) + 1} 
     The D6 rolled a ${Math.floor(Math.random() * 6) + 1} 
     The D20 rolled a ${Math.floor(Math.random() * 20) + 1}`
     );
