@@ -11,17 +11,24 @@ const server = http.createServer(
         res.writeHead(
             200, 
                 { 
-                    'Content-Type': 'text/plain' 
+                    'Content-Type': 'text/html' 
                 }
             );
-        res.end(`Hello, Devons' World ! ! !
+        res.end(
+            `<html> 
+            <title> Hello, Devons' World ! ! ! </title>
+            
+<h1> Welcome to my Webpage! </h1>
 
-The time on ${os.hostname()} (server) is ${new Date().toLocaleString()}
+<p> The time on ${os.hostname()} (server) is ${new Date().toLocaleString()} </p>
 
-The D6 rolled a ${Math.floor(Math.random() * 6) + 1}
+<p> The D2 rolled a ${Math.floor(Math.random() * 2) + 1} </p>
 
-The D20 rolled a ${Math.floor(Math.random() * 20) + 1}
-`
+<p> The D6 rolled a ${Math.floor(Math.random() * 6) + 1} </p>
+
+<p> The D20 rolled a ${Math.floor(Math.random() * 20) + 1} </p>
+</html>
+            `
         );
     }
 );
