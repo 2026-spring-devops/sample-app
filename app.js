@@ -2,19 +2,27 @@ const http = require(
     'http'
 );
 
+const os = require(
+    'os'
+);
+
 const server = http.createServer(
     (req, res) => {
         res.writeHead(
             200, 
-            { 
-                'Content-Type': 'text/plain' 
-            }
-        );
-        res.end(`
-            Hello, Devons World! 
-            The time on the server is ${new Date().toLocaleString()}
+                { 
+                    'Content-Type': 'text/plain' 
+                }
+            );
+        res.end(`Hello, Thomas' World ! ! !
+
+The time on ${os.hostname()} (server) is ${new Date().toLocaleString()}
+
+The D6 rolled a ${Math.floor(Math.random() * 6) + 1}
+
+The D20 rolled a ${Math.floor(Math.random() * 20) + 1}
 `
-        );          
+        );
     }
 );
 
