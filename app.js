@@ -23,6 +23,8 @@ The D6 rolled a ${Math.floor(Math.random() * 6) + 1}
 The D20 rolled a ${Math.floor(Math.random() * 20) + 1}
 
 The D30 rolled a ${Math.floor(Math.random() * 30) + 1}
+
+The 2 D10 rolled a ${Math.floor(Math.random() * 100) + 1}
 `
         );          
     }
