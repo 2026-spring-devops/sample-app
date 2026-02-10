@@ -1,4 +1,4 @@
-# First "team" repo for Madison College Cloud - DevOps class...
+# First "team" repo for Madison College Cloud - DevOps class... I already merged
 
 ### Git is breathing : - )
 
