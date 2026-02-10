@@ -25,6 +25,9 @@ The D20 rolled a ${Math.floor(Math.random() * 20) + 1}
 The D30 rolled a ${Math.floor(Math.random() * 30) + 1}
 
 The 2 D10 rolled a ${Math.floor(Math.random() * 100) + 1}
+
+The coin toss was ${Math.random() < 0.5 ? 'Heads' : 'Tails'} 
+
 `
         );          
     }
