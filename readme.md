@@ -4,6 +4,7 @@
 
 ![AI generated image of breathing DAGs](./git-is-breathing.jpg)
 
+Devon
 Rane
 Thomas
 Tom
