@@ -1,5 +1,14 @@
-# First "team" repo for Madison College Cloud - DevOps class...
+# First "team" repo for Madcol Cloud - DevOps class...
 
 ### Git is breathing : - )
 
 ![AI generated image of breathing DAGs](./git-is-breathing.jpg)
+
+Devon
+Brock
+Jay-Byrd
+Jeffrey
+Rane
+Thomas
+Tom
+Scott
