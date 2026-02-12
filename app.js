@@ -12,7 +12,7 @@ const server = http.createServer((req, res) => {
   <body>
     <h1>Welcome to my Webpage!</h1>
     <p>The time on ${os.hostname()} (server) is ${new Date().toLocaleString()}</p>
-    <p>The D2 rolled a ${Math.floor(Math.random() * 2) + 1}</p>
+    <p>Rolled a coin toss${Math.floor(Math.random() * 2) + 1}</p>
     <p>The D6 rolled a ${Math.floor(Math.random() * 6) + 1}</p>
     <p>The D20 rolled a ${Math.floor(Math.random() * 20) + 1}</p>
   </body>
