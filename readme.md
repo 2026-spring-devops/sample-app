@@ -5,6 +5,7 @@
 ![AI generated image of breathing DAGs](./git-is-breathing.jpg)
 
 Brock
+Jay-Byrd
 Rane
 Thomas
 Tom
