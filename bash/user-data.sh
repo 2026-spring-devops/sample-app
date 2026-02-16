@@ -43,7 +43,7 @@ The coin toss was ${(Math.floor(Math.random() * 2) + 1) == 1 ? 'HEADS' : 'TAILS'
 );
 
 // Oh yeah, this is where it reads the .env file...
-const port = process.env.PORT || 8080; 
+const port = process.env.PORT || 80; 
 
 server.listen(
     port,
