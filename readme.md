@@ -3,3 +3,12 @@
 ### Git is breathing : - )
 
 ![AI generated image of breathing DAGs](./git-is-breathing.jpg)
+
+Devon
+Brock
+Jay-Byrd
+Jeffrey
+Rane
+Scott
+Thomas
+Tom
