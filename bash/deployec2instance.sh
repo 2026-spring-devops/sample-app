@@ -3,10 +3,11 @@
 set -e
 
 export AWS_DEFAULT_REGION="us-east-1"
+timestamp=$(date +%Y%m%d%H%M%S)
 user_data=$(cat user-data.sh)
 
 security_group_id=$(aws ec2 create-security-group \
-  --group-name "sample-app" \
+  --group-name "sample-app-$timestamp" \
   --description "Allow HTTP traffic into the sample app" \
   --output text \
   --query GroupId)
