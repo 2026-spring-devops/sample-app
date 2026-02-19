@@ -5,8 +5,11 @@ set -e
 export AWS_DEFAULT_REGION="us-east-1"
 user_data=$(cat user-data.sh)
 
+# generate a unique suffix using the current timestamp (seconds since epoch)
+timestamp=$(date +%s)
+
 security_group_id=$(aws ec2 create-security-group \
-  --group-name "sample-app" \
+  --group-name "sample-app-$timestamp" \
   --description "Allow HTTP traffic into the sample app" \
   --output text \
   --query GroupId)
@@ -28,7 +31,7 @@ instance_id=$(aws ec2 run-instances \
   --instance-type "t2.micro" \
   --security-group-ids "$security_group_id" \
   --user-data "$user_data" \
-  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=sample-app}]' \
+  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=sample-app-$timestamp}]" \
   --output text \
   --query Instances[0].InstanceId)
 
