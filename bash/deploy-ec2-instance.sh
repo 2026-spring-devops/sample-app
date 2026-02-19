@@ -4,9 +4,11 @@ set -e
 
 export AWS_DEFAULT_REGION="us-east-1"
 user_data=$(cat user-data.sh)
+timestamp=$(date -u +"%Y%m%d-%H%M%S")
+resource_name="sample-app-${timestamp}"
 
 security_group_id=$(aws ec2 create-security-group \
-  --group-name "sample-app" \
+  --group-name "$resource_name" \
   --description "Allow HTTP traffic into the sample app" \
   --output text \
   --query GroupId)
@@ -28,7 +30,7 @@ instance_id=$(aws ec2 run-instances \
   --instance-type "t2.micro" \
   --security-group-ids "$security_group_id" \
   --user-data "$user_data" \
-  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=sample-app}]' \
+  --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$resource_name}]" \
   --output text \
   --query Instances[0].InstanceId)
 
@@ -37,6 +39,7 @@ public_ip=$(aws ec2 describe-instances \
   --output text \
   --query 'Reservations[*].Instances[*].PublicIpAddress')
 
+echo "Resource Name = $resource_name"
 echo "Instance ID = $instance_id"
 echo "Security Group ID = $security_group_id"
 echo "Public IP = $public_ip"
