@@ -1,4 +1,8 @@
 {
   "git.autofetch": "all",
-  "git.allowForcePush": true
+  "git.allowForcePush": true,
+  "remote.SSH.connectTimeout": 120,
+  "remote.SSH.serverAliveInterval": 60,
+  "http.proxyConnectTimeout": 120000,
+  "remote.autoForwardPortsSource": "hybrid"
 }
