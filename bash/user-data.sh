@@ -9,7 +9,8 @@ gpgkey=https://rpm.nodesource.com/gpgkey/ns-operations-public.key
 EOF
 yum install -y nodejs
 
-tee app.js > /dev/null << "EOF"
+# Add app to a known location
+tee /usr/local/sbin/app.js > /dev/null << "EOF"
 const http = require(
     'http'
 );
@@ -43,7 +44,7 @@ The coin toss was ${(Math.floor(Math.random() * 2) + 1) == 1 ? 'HEADS' : 'TAILS'
 );
 
 // Oh yeah, this is where it reads the .env file...
-const port = process.env.PORT || 80; 
+const port = process.env.PORT || 8080; 
 
 server.listen(
     port,
@@ -53,4 +54,29 @@ server.listen(
 );
 EOF
 
-nohup node app.js &
+# Create systemd to start app.js automatically
+tee /lib/systemd/system/app.service > /dev/null << "EOF"
+[Unit]
+Description=Node.js App Service
+After=network-online.target local-fs.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/local/sbin/
+ExecStart=/usr/bin/nohup /usr/bin/node ./app.js
+Restart=always
+RestartSec=5
+KillSignal=SIGINT
+TimeoutStopSec=30
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Reload systemd and enable service
+systemctl daemon-reexec
+systemctl daemon-reload
+systemctl enable app.service
+systemctl start app.service
