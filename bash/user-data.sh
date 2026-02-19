@@ -7,52 +7,17 @@ tee /etc/yum.repos.d/nodesource-nodejs.repo > /dev/null <<EOF
 baseurl=https://rpm.nodesource.com/pub_23.x/nodistro/nodejs/x86_64
 gpgkey=https://rpm.nodesource.com/gpgkey/ns-operations-public.key
 EOF
-yum install -y nodejs
+yum install -y nodejs git
 
-# Add app to a known location
-tee /usr/local/sbin/app.js > /dev/null << "EOF"
-const http = require(
-    'http'
-);
+# Download Git repository to a known location
+# This way, we can just update app.js instead of both the userdata and app in the repo
+mkdir -p /root
+cd /root
+git clone -b bpaulisse/chapter2-bash --single-branch https://github.com/2026-spring-devops/sample-app.git > /root/git.log
 
-const os = require(
-    'os'
-);
-
-const server = http.createServer(
-    (req, res) => {
-        res.writeHead(
-            200, 
-            { 
-                'Content-Type': 'text/plain' 
-            }
-        );
-        res.end(`Hello, DevOp's World ! ! !
-
-The time on ${os.hostname()} (server) is ${new Date().toLocaleString()}
-
-The D6 rolled a ${Math.floor(Math.random() * 6) + 1}
-
-The D20 rolled a ${Math.floor(Math.random() * 20) + 1}
-
-The D4 rolled a ${Math.floor(Math.random() * 4) + 1}
-
-The coin toss was ${(Math.floor(Math.random() * 2) + 1) == 1 ? 'HEADS' : 'TAILS'}
-`
-        );          
-    }
-);
-
-// Oh yeah, this is where it reads the .env file...
-const port = process.env.PORT || 8080; 
-
-server.listen(
-    port,
-    () => {
-        console.log(`Listening on port ${port}`);
-    }
-);
-EOF
+# Copy app to a known location
+cp sample-app/src/app.js /usr/local/sbin
+cp sample-app/src/.env /usr/local/sbin/app.env
 
 # Create systemd to start app.js automatically
 tee /lib/systemd/system/app.service > /dev/null << "EOF"
@@ -64,6 +29,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 WorkingDirectory=/usr/local/sbin/
+EnvironmentFile=/usr/local/sbin/app.env
 ExecStart=/usr/bin/nohup /usr/bin/node ./app.js
 Restart=always
 RestartSec=5
