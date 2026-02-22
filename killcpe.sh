@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-EXTENSIONS_DIR="~/.vscode-server/extensions"
+EXTENSIONS_DIR="${HOME}/.vscode-server/extensions"
 
 main() {
     if [[ ! -d "$EXTENSIONS_DIR" ]]; then
