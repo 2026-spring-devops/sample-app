@@ -15,4 +15,4 @@
     dest: app.js
 
 - name: Start sample app          
-  shell: nohup node app.js &
+  shell: PORT={{ sample_app_port | default(8080) }} nohup node app.js &
