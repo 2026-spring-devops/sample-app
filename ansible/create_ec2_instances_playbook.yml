@@ -6,7 +6,7 @@
   vars:                                                 
     num_instances: 1
     base_name: sample_app_ansible
-    http_port: 8080
+    http_ports: [8080, 8081]
   tasks:
     - name: Create security group                       
       amazon.aws.ec2_security_group:
@@ -14,7 +14,7 @@
         description: "{{ base_name }} HTTP and SSH"
         rules:
           - proto: tcp
-            ports: ["{{ http_port }}"]
+            ports: "{{ http_ports }}"
             cidr_ip: 0.0.0.0/0
           - proto: tcp
             ports: [22]
