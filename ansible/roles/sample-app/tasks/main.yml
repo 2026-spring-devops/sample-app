@@ -12,7 +12,21 @@
 - name: Copy sample app           
   copy:
     src: app.js
-    dest: app.js
+    dest: /usr/local/sbin/app.js
 
-- name: Start sample app          
-  shell: nohup node app.js &
+- name: Create systemd service file
+  template:
+    src: sample-app.service.j2
+    dest: /lib/systemd/system/sample-app.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Reload systemd daemon
+  shell: systemctl daemon-reload
+
+- name: Enable and start sample-app service
+  shell: systemctl enable --now sample-app
+
+- name: Restart service as fallback
+  shell: systemctl restart sample-app

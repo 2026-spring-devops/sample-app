@@ -1,0 +1,14 @@
+[Unit]
+Description=Sample Node.js Application
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/usr/local/sbin
+ExecStart=/usr/bin/node /usr/local/sbin/app.js
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
