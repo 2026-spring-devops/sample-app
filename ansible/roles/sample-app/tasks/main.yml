@@ -14,5 +14,9 @@
     src: app.js
     dest: app.js
 
+- name: Stop existing Node.js processes
+  shell: pkill -f "node app.js" || true
+  ignore_errors: true
+
 - name: Start sample app          
   shell: nohup node app.js &

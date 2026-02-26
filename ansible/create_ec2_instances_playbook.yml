@@ -1,12 +1,17 @@
 - name: Deploy EC2 instances in AWS
   hosts: localhost                                      
   gather_facts: no
+  vars_prompt:
+    - name: port
+      prompt: "Enter the HTTP port"
+      default: 8080
+      private: no
   environment:
     AWS_REGION: us-east-1
   vars:                                                 
     num_instances: 1
     base_name: sample_app_ansible
-    http_port: 8080
+    http_port: "{{ port }}"
   tasks:
     - name: Create security group                       
       amazon.aws.ec2_security_group:
@@ -32,6 +37,7 @@
       amazon.aws.ec2_ami_info:
         owners: amazon
         filters:
+
           name: al2023-ami-2023.*-x86_64
       register: amazon_linux_amis
 
