@@ -30,12 +30,12 @@ build {
 
   provisioner "file" {                                
     source      = "app.js"
-    destination = "/usr/local/sbin/app.js"
+    destination = "/home/ec2-user/app.js"
   }
 
   provisioner "file" {
     source      = "app.service"
-    destination = "/lib/systemd/system/app.service"
+    destination = "/home/ec2-user/app.service"
   }
 
   provisioner "shell" {                               
