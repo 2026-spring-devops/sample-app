@@ -1,0 +1,1 @@
+# Since the template included a systemd service, no userdata is needed here.
