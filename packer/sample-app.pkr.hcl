@@ -36,5 +36,5 @@ build {
   provisioner "shell" {                               
     script       = "install-node.sh"
     pause_before = "30s"
-  }
+ }
 }
