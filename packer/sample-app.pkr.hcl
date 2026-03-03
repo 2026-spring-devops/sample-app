@@ -44,7 +44,7 @@ build {
   }
 
   provisioner "shell" {
-    script      = "install-service.sh"
+    script       = "install-service.sh"
     pause_before = "5s"
   }
 }
