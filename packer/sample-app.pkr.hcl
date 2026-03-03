@@ -30,11 +30,21 @@ build {
 
   provisioner "file" {                                
     source      = "app.js"
-    destination = "/home/ec2-user/app.js"
+    destination = "/usr/local/sbin/app.js"
+  }
+
+  provisioner "file" {
+    source      = "app.service"
+    destination = "/lib/systemd/system/app.service"
   }
 
   provisioner "shell" {                               
     script       = "install-node.sh"
     pause_before = "30s"
+  }
+
+  provisioner "shell" {
+    script      = "install-service.sh"
+    pause_before = "5s"
   }
 }
