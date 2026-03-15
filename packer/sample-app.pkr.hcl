@@ -7,7 +7,7 @@ packer {
   }
 }
 
-data "amazon-ami" "amazon-linux" {                    1
+data "amazon-ami" "amazon-linux" {
   filters = {
     name = "al2023-ami-2023.*-x86_64"
   }
@@ -16,7 +16,7 @@ data "amazon-ami" "amazon-linux" {                    1
   region      = "us-east-1"
 }
 
-source "amazon-ebs" "amazon-linux" {                  2
+source "amazon-ebs" "amazon-linux" {
   ami_name        = "sample-app-packer-${uuidv4()}"
   ami_description = "Amazon Linux AMI with a Node.js sample app."
   instance_type   = "t2.micro"
@@ -25,15 +25,15 @@ source "amazon-ebs" "amazon-linux" {                  2
   ssh_username    = "ec2-user"
 }
 
-build {                                               3
+build {                                               
   sources = ["source.amazon-ebs.amazon-linux"]
 
-  provisioner "file" {                                4
+  provisioner "file" {                                
     source      = "app.js"
     destination = "/home/ec2-user/app.js"
   }
 
-  provisioner "shell" {                               5
+  provisioner "shell" {                               
     script       = "install-node.sh"
     pause_before = "30s"
   }
