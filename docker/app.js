@@ -9,12 +9,12 @@ const os = require(
 const server = http.createServer(
     (req, res) => {
         res.writeHead(
-            200, 
-            { 
-                'Content-Type': 'text/plain' 
+            200,
+            {
+                'Content-Type': 'text/plain'
             }
         );
-        res.end(`Hello, DevOp's Docker World ! ! !
+        res.end(`Hello, DevOp's Docker World V2 ! ! !
 
 The time on ${os.hostname()} (server) is ${new Date().toLocaleString()}
 
@@ -26,12 +26,12 @@ The D4 rolled a ${Math.floor(Math.random() * 4) + 1}
 
 The coin toss was ${(Math.floor(Math.random() * 2) + 1) == 1 ? 'HEADS' : 'TAILS'}
 `
-        );          
+        );
     }
 );
 
 // Oh yeah, this is where it reads the .env file...
-const port = process.env.PORT || 8080; 
+const port = process.env.PORT || 8080;
 
 server.listen(
     port,
