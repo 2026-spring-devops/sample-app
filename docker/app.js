@@ -14,7 +14,7 @@ const server = http.createServer(
                 'Content-Type': 'text/plain' 
             }
         );
-        res.end(`Hello, DevOp's Docker World ! ! !
+        res.end(`Hello, DevOp's Docker World ! ! ! (Sha-Bang)
 
 The time on ${os.hostname()} (server) is ${new Date().toLocaleString()}
 
